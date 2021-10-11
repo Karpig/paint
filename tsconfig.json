@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+  },
+  "include": ["client/webpack.config.ts"],
+  "exclude": ["node_modules"]
+}
