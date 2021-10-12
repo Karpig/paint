@@ -4,6 +4,12 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "target": "ESNext",
+    "declaration": true,
+    "rootDir": ".",
+    "paths": {
+      "@client/*": ["client/*"],
+      "@server/*": ["server/*"]
+    }
   },
   "include": ["client", "server"],
   "exclude": ["node_modules"]

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Online paint",
   "scripts": {
-    "start": "npm run start_client",
+    "start": "npm run start_server & npm run start_client",
     "start_server": "cd server && npm run start",
     "start_client": "cd client && npm run start",
     "prepare": "husky install",
-    "lint": "eslint 'src/**/*.{ts,tsx,js}' --fix",
-    "prettier": "prettier 'src/**/*.{ts,tsx,js}' --write"
+    "lint": "eslint '**/src/**/*.{ts,tsx,js}' --fix",
+    "prettier": "prettier '**/src/**/*.{ts,tsx,js}' --write"
   },
   "repository": {
     "type": "git",
