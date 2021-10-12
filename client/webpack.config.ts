@@ -1,9 +1,9 @@
-import {resolve} from 'path';
-import {Configuration} from 'webpack';
+import { resolve } from 'path';
+import { Configuration } from 'webpack';
 import 'webpack-dev-server';
 
 const clientConfig = (env): Configuration => {
-  console.log(env)
+  console.log(env);
   const isProductionMode = false;
 
   return {
@@ -12,15 +12,9 @@ const clientConfig = (env): Configuration => {
     entry: resolve(__dirname, 'src/index'),
     output: {
       path: resolve(__dirname, 'dist/static/js'),
-      filename:
-          isProductionMode
-              ? '[name].[contenthash:8].js'
-              : 'bundle.js',
-      chunkFilename:
-          isProductionMode
-              ? '[name].[contenthash:8].chunk.js'
-              : '[name].chunk.js',
-      publicPath: '/'
+      filename: isProductionMode ? '[name].[contenthash:8].js' : 'bundle.js',
+      chunkFilename: isProductionMode ? '[name].[contenthash:8].chunk.js' : '[name].chunk.js',
+      publicPath: '/',
     },
     module: {
       rules: [
@@ -29,7 +23,7 @@ const clientConfig = (env): Configuration => {
           loader: 'ts-loader',
           exclude: '/node_modules/',
         },
-      ]
+      ],
     },
     resolve: {
       alias: {
@@ -44,7 +38,7 @@ const clientConfig = (env): Configuration => {
       host: env.CLIENT_HOST,
       port: env.CLIENT_PORT,
     },
-  }
+  };
 };
 
 export default clientConfig;

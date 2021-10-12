@@ -5,6 +5,6 @@
     "allowSyntheticDefaultImports": true,
     "target": "ESNext",
   },
-  "include": ["client/webpack.config.ts"],
+  "include": ["client", "server"],
   "exclude": ["node_modules"]
 }
