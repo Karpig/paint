@@ -1,0 +1,28 @@
+.root {
+  display: inline-block;
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  transition: transform var(--animation-duration) linear;
+
+&_loading {
+   animation-name: Spinner;
+   animation-duration: 1s;
+   animation-iteration-count: infinite;
+ }
+
+&_error {
+   color: var(--color-error);
+ }
+}
+
+@keyframes Spinner {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

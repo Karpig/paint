@@ -1,0 +1,7 @@
+:root {
+    --color-error: red;
+
+    --animation-delay: 0s;
+    --animation-duration: 0.3s;
+    --animation-timing-function: ease-out;
+}

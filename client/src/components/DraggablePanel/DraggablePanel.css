@@ -1,0 +1,29 @@
+.root {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    background-color: #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.draggable {
+    cursor: move;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    opacity: .6;
+    transition: opacity var(--animation-duration) var(--animation-timing-function);
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.head {
+    padding: 8px;
+}
+
+.body {
+    padding: 8px;
+}
