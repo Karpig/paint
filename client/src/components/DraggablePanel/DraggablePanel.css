@@ -1,15 +1,17 @@
 .root {
     position: fixed;
-    left: 0;
-    top: 100px;
-    background-color: #ccc;
+    background-color: #FFFFFF;
     border-radius: 4px;
     overflow: hidden;
+    box-shadow:
+            rgba(0, 0, 0, .2) 0 2px 1px -1px,
+            rgba(0, 0, 0, .14) 0 1px 1px 0,
+            rgba(0, 0, 0, .12) 0 1px 3px 0;
 }
 
 .draggable {
     cursor: move;
-    font-size: 16px;
+    font-size: 24px;
     line-height: 1;
     text-align: center;
     opacity: .6;

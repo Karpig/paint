@@ -1,4 +1,4 @@
-import React, { MouseEvent, FC, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import Icon from '@components/Icon';
 import useDragging from '../../hooks/useDragging';
 
@@ -11,11 +11,11 @@ interface DraggablePanelProps {
 
 const DraggablePanel: FC<DraggablePanelProps> = props => {
   const { children, code, title } = props;
-  const [ref, x, y, isDragging] = useDragging(code);
+  const [ref, x, y] = useDragging(code);
 
   return (
-    <div ref={ref} className={styles.root} style={{ left: `${x}px`, top: `${y}px` }}>
-      <div className={styles.draggable}>
+    <div className={styles.root} style={{ transform: `translate(${x}px, ${y}px)` }} ref={ref}>
+      <div className={styles.draggable} data-draggable="target">
         <Icon name="draggable" />
       </div>
       <div className={styles.head}>{title}</div>

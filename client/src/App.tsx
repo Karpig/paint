@@ -8,6 +8,14 @@ const App: FC = props => {
       <DraggablePanel title="Инструменты" code="toolbar">
         <Toolbar />
       </DraggablePanel>
+
+      <DraggablePanel title="Палитра" code="palette">
+        <Toolbar />
+      </DraggablePanel>
+
+      <DraggablePanel title="История" code="history">
+        <Toolbar />
+      </DraggablePanel>
     </div>
   );
 };

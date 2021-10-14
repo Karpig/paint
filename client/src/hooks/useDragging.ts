@@ -3,59 +3,84 @@ import { RefObject, useEffect, useRef, useState } from 'react';
 const useDragging = (
   id: string
 ): [ref: RefObject<HTMLDivElement>, x: number, y: number, isDragging: boolean] => {
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const ref = useRef<HTMLDivElement>(null);
 
-  function onMouseMove(e: MouseEvent) {
-    if (!isDragging || !ref.current) return;
-    setPos({
+  const onMouseDown = (e: MouseEvent) => {
+    if (e.button !== 0 || !ref.current) return;
+
+    setMouse({
       x: e.x,
       y: e.y,
     });
+
+    setIsDragging(true);
+
     e.stopPropagation();
     e.preventDefault();
-  }
+  };
 
-  function onMouseUp(e: MouseEvent) {
+  const onMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !ref.current) return;
+
+    let x = pos.x + e.x - mouse.x;
+    let y = pos.y + e.y - mouse.y;
+
+    if (window.innerWidth - ref.current.clientWidth < x) {
+      x = window.innerWidth - ref.current.clientWidth;
+    } else if (x < 0) {
+      x = 0;
+    }
+
+    if (window.innerHeight - ref.current.clientHeight < y) {
+      y = window.innerHeight - ref.current.clientHeight;
+    } else if (y < 0) {
+      y = 0;
+    }
+
+    setPos({
+      x,
+      y,
+    });
+
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
+  const onMouseUp = (e: MouseEvent) => {
     setIsDragging(false);
     e.stopPropagation();
     e.preventDefault();
-  }
-
-  function onMouseDown(e: MouseEvent) {
-    if (e.button !== 0 || !ref.current) return;
-    setIsDragging(true);
-
-    setPos({
-      x: e.x,
-      y: e.y,
-    });
-
-    e.stopPropagation();
-    e.preventDefault();
-  }
+  };
 
   useEffect(() => {
-    const savePosition = sessionStorage.getItem(`position_${id}`);
+    const savePosition = localStorage.getItem(`position_${id}`);
     if (savePosition) {
       setPos(JSON.parse(savePosition));
     }
   }, []);
 
-  // When the element mounts, attach an mousedown listener
+  useEffect(() => {
+    localStorage.setItem(`position_${id}`, JSON.stringify(pos));
+  }, [pos]);
+
   useEffect(() => {
     if (!ref.current) return;
-    ref.current.addEventListener('mousedown', onMouseDown);
+
+    const target: HTMLDivElement | null =
+      ref.current.querySelector('[data-draggable=target]') || ref.current;
+    if (target) {
+      target.addEventListener('mousedown', onMouseDown);
+    }
 
     return () => {
-      if (!ref.current) return;
-      ref.current.removeEventListener('mousedown', onMouseDown);
+      if (!target) return;
+      target.removeEventListener('mousedown', onMouseDown);
     };
   }, [ref.current]);
 
-  // Everytime the isDragging state changes, assign or remove
-  // the corresponding mousemove and mouseup handlers
   useEffect(() => {
     if (isDragging) {
       document.addEventListener('mouseup', onMouseUp);
@@ -64,8 +89,6 @@ const useDragging = (
       document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('mousemove', onMouseMove);
     }
-
-    sessionStorage.setItem(`position_${id}`, JSON.stringify(pos));
 
     return () => {
       document.removeEventListener('mouseup', onMouseUp);
