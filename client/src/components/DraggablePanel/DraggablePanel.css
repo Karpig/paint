@@ -22,10 +22,6 @@
     }
 }
 
-.head {
-    padding: 8px;
-}
-
 .body {
-    padding: 8px;
+    padding: 0 var(--spacing) var(--spacing) var(--spacing);
 }

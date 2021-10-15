@@ -14,11 +14,15 @@ const DraggablePanel: FC<DraggablePanelProps> = props => {
   const [ref, x, y] = useDragging(code);
 
   return (
-    <div className={styles.root} style={{ transform: `translate(${x}px, ${y}px)` }} ref={ref}>
+    <div
+      className={styles.root}
+      style={{ transform: `translate(${x}px, ${y}px)` }}
+      ref={ref}
+      title={title}
+    >
       <div className={styles.draggable} data-draggable="target">
         <Icon name="draggable" />
       </div>
-      <div className={styles.head}>{title}</div>
       <div className={styles.body}>{children}</div>
     </div>
   );

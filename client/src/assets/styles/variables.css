@@ -1,4 +1,6 @@
 :root {
+    --spacing: 8px;
+
     --color-error: red;
 
     --animation-delay: 0s;

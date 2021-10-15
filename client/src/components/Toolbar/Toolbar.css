@@ -1,4 +1,20 @@
 .root {
-    width: 50px;
-    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(2, 30px);
+    grid-gap: var(--spacing);
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    transition: box-shadow var(--animation-duration) var(--animation-timing-function);
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, .7);
+    }
 }
