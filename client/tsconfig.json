@@ -14,6 +14,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@modules/*": ["src/modules/*"],
       "@store/*": ["src/store/*"]
     }
   },

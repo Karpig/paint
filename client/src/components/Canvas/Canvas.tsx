@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Layer from '../../modules/Layer';
+import Layer from '@modules/Layer';
 
 import styles from './Canvas.css';
 
@@ -9,8 +9,7 @@ const Canvas = () => {
   useEffect(() => {
     if (!containerEl.current) return;
 
-    // @ts-ignore
-    const canvas = new Layer(containerEl.current);
+    new Layer(containerEl.current);
   }, []);
 
   return <div ref={containerEl} className={styles.root} />;
