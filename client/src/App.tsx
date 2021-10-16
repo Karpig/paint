@@ -3,11 +3,15 @@ import Toolbar from '@components/Toolbar';
 import DraggablePanel from '@components/DraggablePanel';
 import Palette from '@components/Palette';
 import Menu from '@components/Menu';
+import Canvas from '@components/Canvas';
 
 const App: FC = () => {
   return (
-    <div>
+    <>
       <Menu />
+
+      <Canvas />
+
       <DraggablePanel title="Инструменты" code="toolbar">
         <Toolbar />
       </DraggablePanel>
@@ -19,7 +23,7 @@ const App: FC = () => {
       <DraggablePanel title="История" code="history">
         <Toolbar />
       </DraggablePanel>
-    </div>
+    </>
   );
 };
 
