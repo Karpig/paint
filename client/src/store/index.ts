@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import settingsReducer from './Settings';
+import toolReducer from './Tool';
 
 export interface AbstractState<Data> {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -11,6 +12,7 @@ export interface AbstractState<Data> {
 export const store = configureStore({
   reducer: {
     settings: settingsReducer,
+    tool: toolReducer,
   },
 });
 
