@@ -2,6 +2,7 @@ export default class Layer {
   container: HTMLElement;
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
+  ratio: number;
   width: number;
   height: number;
   center: {
@@ -13,11 +14,12 @@ export default class Layer {
     this.container = container;
     this.canvas = document.createElement('canvas');
     this.context = this.canvas.getContext('2d') || new CanvasRenderingContext2D();
+    this.ratio = 2;
     this.width = this.container.clientWidth;
     this.height = this.container.clientHeight;
-    this.center = { x: this.width / 2, y: this.height / 2 };
-
-    console.log(container);
+    this.canvas.style.width = `${this.width}px`;
+    this.canvas.style.height = `${this.height}px`;
+    this.center = { x: this.width / this.ratio, y: this.height / this.ratio };
 
     container.appendChild(this.canvas);
 
@@ -26,8 +28,8 @@ export default class Layer {
   }
 
   fitToContainer = () => {
-    this.width = this.canvas.width = this.container.clientWidth;
-    this.height = this.canvas.height = this.container.clientHeight;
+    this.width = this.canvas.width = this.container.clientWidth * this.ratio;
+    this.height = this.canvas.height = this.container.clientHeight * this.ratio;
   };
 
   clear = () => {

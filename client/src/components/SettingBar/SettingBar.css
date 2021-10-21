@@ -1,0 +1,29 @@
+.root {
+    position: relative;
+    padding: calc(var(--spacing) * 2) 0;
+    background-color: var(--color-light);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .3);
+    margin-bottom: calc(var(--spacing) * 5);
+    z-index: 1;
+}
+
+.row {
+    display: flex;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+
+    + .item {
+        margin-left: calc(var(--spacing) * 3);
+    }
+}
+
+.item__label {
+    font-size: 12px;
+}
+
+.item__field {
+    margin-left: calc(var(--spacing) * 2);
+}

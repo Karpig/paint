@@ -4,11 +4,13 @@ import DraggablePanel from '@components/DraggablePanel';
 import Palette from '@components/Palette';
 import Menu from '@components/Menu';
 import Canvas from '@components/Canvas';
+import SettingBar from '@components/SettingBar';
 
 const App: FC = () => {
   return (
     <>
       <Menu />
+      <SettingBar />
 
       <Canvas />
 
