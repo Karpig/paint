@@ -2,12 +2,17 @@ import React from 'react';
 
 import styles from './Toolbar.css';
 import Icon from '@components/Icon';
+import { useDispatch } from 'react-redux';
+import { setTool } from '@store/Tool';
+import Pencil from '@modules/Pencil';
 
 const Toolbar = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.root}>
       <div className={styles.item}>
-        <Icon name="pencil" />
+        <Icon name="pencil" onClick={() => dispatch(setTool(new Pencil()))} />
       </div>
       <div className={styles.item}>
         <Icon name="brush" />

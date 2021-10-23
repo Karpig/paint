@@ -1,7 +1,7 @@
 import Tool from '@modules/Tool';
 import Layer from '@modules/Layer';
 
-class Pencil extends Tool {
+class Eraser extends Tool {
   constructor(layer: Layer) {
     super(layer);
 
@@ -41,4 +41,4 @@ class Pencil extends Tool {
   }
 }
 
-export default Pencil;
+export default Eraser;
